@@ -1,0 +1,277 @@
+Q3 - Section A 
+----------------------------------
+----------------------------------
+
+Member class :
+--------------
+
+package org.test;
+import java.util.*;
+public class MemberType {
+    
+    int age;
+    String name;
+    int memberType;
+    String memberTypes;
+    static int crew;
+    static int adult;
+    static int child;
+    int charge;
+    
+    Scanner scan = new Scanner(System.in);
+    
+    public MemberType() 
+    {
+        System.out.println("Enter  Age");
+        System.out.println("age below 18 is considered as child");
+        this.age=scan.nextInt();
+        System.out.println("Enter Name");
+        this.name=scan.next();
+        
+        if(age>18) {
+        
+            System.out.println("Type 1 for Crew Member / 2 for Adults");
+        
+            this.memberType=scan.nextInt();
+        
+    if(memberType==1) 
+        {
+            this.memberTypes="Crew";
+            crew++;
+            charge=0;
+        }
+        else if(memberType==2) 
+        {
+            this.memberTypes="Adult";
+            adult++;
+            charge=500;
+        }
+        }
+                else 
+        {
+            this.memberTypes="Children";
+            child++;
+            charge=250;
+        }
+        }
+     public static String countMembers() {
+        
+        return "Number of Crew Members "+crew+"\nNumber of Adults: "+adult+"\nNumber of Children: "+child;
+    }   
+}
+
+Cruise class :
+--------------
+
+package org.test;
+import java.util.*;
+public class CruiseClass  {
+    public static void main(String[] args) 
+    {
+        MemberType ob;    	
+    	Scanner sc = new Scanner(System.in);
+        Map<Integer,MemberType> mapping = new HashMap<Integer,MemberType>();
+        System.out.println("Enter the Number of people going on cruise");
+        int num = sc.nextInt();
+        
+        for(int i=1; i<=num; i++) 
+        {
+            mapping.put(i, new MemberType());
+        }
+        for(Map.Entry<Integer, MemberType> entry:mapping.entrySet()){ 
+            int key=entry.getKey();  
+            MemberType b=entry.getValue();  
+            System.out.println(key+" Data:");  
+            System.out.println("Name: " + b.name + "\nAge: " + b.age + "\nMember Type: " + b.memberTypes+"\nFees: "+b.charge);    
+            }
+        
+       System.out.println(MemberType.countMembers());
+        
+    }
+}
+
+----------------------------------------------
+	          Output
+                  ------ 
+Enter the Number of people going on cruise
+2
+Enter Age
+20
+Enter Name
+Ram
+Type 1 for Crew Member / 2 for Adults
+2
+Enter Age
+34
+Enter Name
+Rakesh
+Type 1 for Crew Member / 2 for Adults
+1
+ Data:1
+Name: Ram
+Age: 20
+Member Type: Adult
+Fees: 500
+ Data:2
+Name: Rakesh
+Age: 34
+Member Type: Crew
+Fees: 0
+Number of Crew Members 1
+Number of Adults: 1
+Number of Children: 0
+------------------------------------------------
+
+Q3 - Section B
+-------------------------------
+-------------------------------
+
+Toothpaste user details :
+-------------------------
+
+package org.test;
+import java.util.*;
+public class ToothUsers {
+    public static void main(String[] args)
+    {
+    Toothpaste ob;
+    Scanner sc = new Scanner(System.in);
+    Map<Integer,Toothpaste> mapValue = new HashMap<Integer,Toothpaste>();
+    
+    System.out.println("Enter the Number of users");
+    
+    
+    int num = sc.nextInt();
+    
+    for(int i=1; i<=num; i++)
+    {
+        mapValue.put(i, new Toothpaste());
+    }
+    for(Map.Entry<Integer, Toothpaste> entry:mapValue.entrySet()){    
+        int key=entry.getKey();  
+        Toothpaste b=entry.getValue();  
+        System.out.println("Add details : "+key);  
+        System.out.println("Name: " + b.name + "\nAge: " + b.age + "\nToothpaste: " + b.paste);    
+        }
+    
+   System.out.println(Toothpaste.Countusers());
+   System.out.println(Toothpaste.Maximum());
+}
+}
+
+Toothpaste class :
+-----------------
+
+package org.test;
+import java.util.*;
+public class Toothpaste {
+        String paste;
+        int age;
+        String name;
+        static int uscl,uspp,uspt,usdb;
+        Scanner scan = new Scanner(System.in);
+         public Toothpaste()
+         {
+          System.out.println("Enter your name");
+          this.name = scan.next();
+          System.out.println("Enter Your Age");
+          this.age=scan.nextInt();
+          System.out.println("Enter the brand of the toothpaste:");
+          this.paste = scan.next();
+             
+             if(paste.equals("Colgate"))
+             {
+                 uscl++;
+             }
+             else if(paste.equals("Pepsodent"))
+             {
+                 uspp++;
+             }
+             else if(paste.equals("Patanjali"))
+             {
+                 uspt++;
+             }
+             else
+             {
+                 usdb++;
+             }
+             
+         }
+         public static String Countusers()
+         {
+             return "Number of Colgate users : "+uscl+"\nNumber of Pepsodent users : "+uspp+"\nNumber of Patanjali users : "+uspt+"\nNumber of Dabur Red users : "+usdb;
+         }
+         public static String Maximum()
+         {
+             if(uscl>uspp && uscl>uspt && uscl>usdb)
+             {
+                 return "Maximum Used Brand is Colgate";
+             }
+             else if(uspp>uscl && uspp>uspt && uspp>usdb)
+             {
+                 return"Maximum Used Brand is Pepsodent";
+             }
+             else if(uspt>uspp && uspt>uscl && uspt>usdb)
+             {
+                 return"Maximum Used Brand is Patanjali";
+             }
+             else
+             {
+                 return "Maximum Used Brand is Dabur Red";
+             }
+         }
+}
+
+------------------------------------------
+		Output
+		------
+
+Enter the Number of users
+4
+Enter your name
+P1
+Enter Your Age
+20
+Enter the brand of the toothpaste:
+Colgate
+Enter your name
+P2
+Enter Your Age
+23
+Enter the brand of the toothpaste:
+Pepsodent
+Enter your name
+P3
+Enter Your Age
+16
+Enter the brand of the toothpaste:
+Colgate
+Enter your name
+P4
+Enter Your Age
+54
+Enter the brand of the toothpaste:
+Patanjali
+Add details : 1
+Name: P1
+Age: 20
+Toothpaste: Colgate
+Add details : 2
+Name: P2
+Age: 23
+Toothpaste: Pepsodent
+Add details : 3
+Name: P3
+Age: 16
+Toothpaste: Colgate
+Add details : 4
+Name: P4
+Age: 54
+Toothpaste: Patanjali
+Number of Colgate users : 2
+Number of Pepsodent users : 1
+Number of Patanjali users : 1
+Number of Dabur Red users : 0
+Maximum Used Brand is Colgate
+
+------------------------------------------

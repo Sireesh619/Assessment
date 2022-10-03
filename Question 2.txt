@@ -1,0 +1,183 @@
+
+Q2  
+--------------------------
+--------------------------
+
+Regular members class:
+----------------------
+
+package org.test;
+import java.util.*;
+public class Regularmain extends Silver {
+	int type;
+	double Regularcalculate(int months)
+	{   double total=0;
+		int golffee=20000;
+		total=golffee*months;
+		return total;
+	}
+    
+	public Regularmain(int type) {
+		super();
+		this.type = type;
+	}
+	void membershiptype()
+	{ 
+		Scanner ob=new Scanner(System.in);
+		if(type!=3 |type!=1 |type!=2  )
+		{
+			System.out.println("Choice");
+		}
+		if(type==1) {
+			System.out.println("REGULAR Membership");
+		 System.out.println("Enter the months : ");
+		  int months=ob.nextInt();
+		  if(months<=0)
+		  {
+			  System.out.println("Enter valid months");
+			   months=ob.nextInt();
+		  }
+		  
+			double total=Regularcalculate(months);
+			System.out.println("Amount for "+ months +" for the REGULAR member is Rs: "+total);
+			
+		}
+		if(type==2) {
+			System.out.println("GOLD Membership");
+		 System.out.println("Enter the months : ");
+		  int months=ob.nextInt();
+		  if(months<=0)
+		  {
+			  System.out.println("Enter valid months");
+			   months=ob.nextInt();
+		  }
+		  
+			double total=super.goldcalculate(months);
+			if(months<=6)
+			{
+				System.out.println("Less than 6 months of membership i.e "+months+" so the total is RS:"+total);
+			}
+			else
+			{
+				System.out.println("More than 6 months of membership i.e "+months+" so the first 6 months are free. so chargeable months are " +(months-6)+ "so the total is RS:"+total);
+			}
+			
+		}
+		if(type==3) {
+			System.out.println("SILVER Membership");
+		 System.out.println("Enter the months");
+		  int months=ob.nextInt();
+		  if(months<=0)
+		  {
+			  System.out.println("Enter vaild months");
+			   months=ob.nextInt();
+		  }
+		  
+			double total=super.slivercalculate(months);
+			if(months<=6)
+			{
+				System.out.println("Less than 6 months of membership i.e "+months+" so the total is RS:"+total);
+			}
+			else
+			{
+				System.out.println("More than 6 months of membership i.e "+months+" so the first 6 months are free. so chargeable months are " +(months-6)+ "so the total is RS:"+total);
+			}
+			
+		}
+
+	}
+
+	
+
+		
+	
+
+
+public static void main(String[] args) {
+		Scanner ob=new Scanner(System.in);
+		System.out.println("Enter name:");
+		String name=ob.next();
+		System.out.println("Welcome :"+name);
+		System.out.println("Enter the type of membership REGULAR, GOLD, SILVER");
+		int type=ob.nextInt();
+		Regularmain ob1=new Regularmain(type);
+		ob1.membershiptype();
+		
+		
+}
+}
+
+Silver members class : 
+--------------------
+package org.test;
+
+public class Sliver extends Gold {
+	double slivercalculate(int months)
+	{
+		double total=0;
+		final int memfee=15000;
+		final int enrollfee=5000;
+		int golffee=20000;
+		System.out.println("SILVER Membership");
+		if(months<=6)
+		{
+			total=memfee+enrollfee;
+			
+		}
+		else
+		{
+			total=memfee+enrollfee;
+			total=total+(golffee*(months-6));
+			System.out.println("More than 6 months i.e "+months+" so the first 6 months are free. so chargeable months are "+(months-6)+"so the total is RS:"+total);
+			
+		}
+		return total;
+}
+}
+Gold members class : 
+--------------------
+package org.test;
+
+public class Gold {
+	double goldcalculate(int months)
+	{
+		double total=0;
+		final int memfee=90000;
+		final int enrollfee=10000;
+		int golffee=10000;
+		
+		if(months<=6)
+		{
+			total=memfee+enrollfee;
+			
+			
+		}
+		else
+		{
+			total=memfee+enrollfee;
+			total=total+(golffee*(months-6));
+			
+			
+		}
+		return total;
+	
+}
+
+}
+
+-------------------------------------------------------
+	              Output
+	              ------
+Enter name:
+Ram
+Welcome :Ram
+Enter the type of membership REGULAR, GOLD, SILVER
+1
+Choice
+REGULAR Membership
+Enter the months : 
+8
+Amount for 8 for the REGULAR member is Rs: 160000.0
+---------------------------------------------------------_
+
+________________________________________________________________________________________________________________________________
